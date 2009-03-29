@@ -1,6 +1,6 @@
 Name: blcr
 Version: 0.8.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Berkeley Lab Checkpoint/Restart for Linux
 Url: http://ftg.lbl.gov/checkpoint
 Provides: %{name}-kmod-common = %{version}
@@ -215,6 +215,9 @@ This package includes tests for Berkeley Lab Checkpoint/Restart for Linux
 %endif
 
 %changelog
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.0-2
+- rebuild for new F11 features
+
 * Fri Jan 16 2009 Neal Becker <ndbecker2@gmail.com> - 0.8.0-1
 - Update to 0.8.0 release
 
