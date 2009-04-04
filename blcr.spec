@@ -1,6 +1,6 @@
 Name: blcr
 Version: 0.8.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 Summary: Berkeley Lab Checkpoint/Restart for Linux
 Url: http://ftg.lbl.gov/checkpoint
 Provides: %{name}-kmod-common = %{version}
@@ -21,7 +21,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: chrpath
 Requires: /sbin/chkconfig %{name}-kmod >= %{version}
 #Generic i386 is NOT supported
-ExclusiveArch: i486 x86_64 ppc ppc64 arm
+ExclusiveArch: i586 x86_64 ppc ppc64 arm
 
 %description
 Berkeley Lab Checkpoint/Restart for Linux (BLCR)
@@ -215,6 +215,9 @@ This package includes tests for Berkeley Lab Checkpoint/Restart for Linux
 %endif
 
 %changelog
+* Sat Apr 04 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.0-3
+- s/i486/i586/ in ExclusiveArch for F11
+
 * Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.0-2
 - rebuild for new F11 features
 
