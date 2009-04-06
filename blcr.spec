@@ -1,6 +1,6 @@
 Name: blcr
-Version: 0.8.0
-Release: 3%{?dist}
+Version: 0.8.1
+Release: 1%{?dist}
 Summary: Berkeley Lab Checkpoint/Restart for Linux
 Url: http://ftg.lbl.gov/checkpoint
 Provides: %{name}-kmod-common = %{version}
@@ -13,9 +13,6 @@ License: GPLv2+
 Source: http://ftg.lbl.gov/CheckpointRestart/downloads/%{name}-%{version}.tar.gz
 # Patch0 is to prevent enabling service by default
 Patch0: blcr-init.patch
-# Patch1 is to remove -fno-stack-protector (provided by upstream)
-# Patch1 requires running autoreconf
-# Patch1: blcr-stackcheck.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 #BuildRequires: chrpath autoconf automake libtool
 BuildRequires: chrpath
@@ -42,9 +39,6 @@ matching your kernel version.
 %prep
 %setup -q 
 %patch0 -p0
-#%patch1 -p0
-#patch1 modifies configure.ac, Makefile.am
-#autoreconf --force --install
 #remove some binary junk
 rm -f tests/CountingApp.class
 
