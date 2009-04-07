@@ -1,5 +1,5 @@
 Name: blcr
-Version: 0.8.0
+Version: 0.8.1
 Release: 1%{?dist}
 Summary: Berkeley Lab Checkpoint/Restart for Linux
 Url: http://ftg.lbl.gov/checkpoint
@@ -13,15 +13,12 @@ License: GPLv2+
 Source: http://ftg.lbl.gov/CheckpointRestart/downloads/%{name}-%{version}.tar.gz
 # Patch0 is to prevent enabling service by default
 Patch0: blcr-init.patch
-# Patch1 is to remove -fno-stack-protector (provided by upstream)
-# Patch1 requires running autoreconf
-# Patch1: blcr-stackcheck.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 #BuildRequires: chrpath autoconf automake libtool
 BuildRequires: chrpath
 Requires: /sbin/chkconfig %{name}-kmod >= %{version}
 #Generic i386 is NOT supported
-ExclusiveArch: i486 x86_64 ppc ppc64 arm
+ExclusiveArch: i586 x86_64 ppc ppc64 arm
 
 %description
 Berkeley Lab Checkpoint/Restart for Linux (BLCR)
@@ -42,9 +39,6 @@ matching your kernel version.
 %prep
 %setup -q 
 %patch0 -p0
-#%patch1 -p0
-#patch1 modifies configure.ac, Makefile.am
-#autoreconf --force --install
 #remove some binary junk
 rm -f tests/CountingApp.class
 
@@ -215,6 +209,12 @@ This package includes tests for Berkeley Lab Checkpoint/Restart for Linux
 %endif
 
 %changelog
+* Sat Apr 04 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.0-3
+- s/i486/i586/ in ExclusiveArch for F11
+
+* Sun Mar 29 2009 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info> - 0.8.0-2
+- rebuild for new F11 features
+
 * Fri Jan 16 2009 Neal Becker <ndbecker2@gmail.com> - 0.8.0-1
 - Update to 0.8.0 release
 
